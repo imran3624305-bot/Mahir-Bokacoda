@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>মাহির স্পেশাল রোস্ট Zone</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 40px 20px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            max-width: 90%;
+            width: 500px;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            color: #ff4757;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        p.subtitle {
+            color: #ffa502;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .roast-card {
+            background: rgba(0, 0, 0, 0.4);
+            border-left: 5px solid #ff4757;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #eccc68;
+            transition: all 0.3s ease;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff4757, #ff6b81);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            outline: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 71, 87, 0.6);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.03); }
+        }
+
+        .floating-emoji {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 4s linear infinite;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🚨 মাহির সতর্কতা! 🚨</h1>
+        <p class="subtitle">২৪ ঘণ্টা পিছনে লেগে থাকার বিশ্বরেকর্ডধারী</p>
+        
+        <div class="roast-card" id="roastText">
+            "মাহির, আমার পিছনে না লেগে একটা নিজের লাইফ খুঁজে নে!"
+        </div>
+
+        <button class="btn" onclick="nextRoast()">পরের রোস্ট মারো 🔥</button>
+    </div>
+
+    <script>
+        const roasts = [
+            "মাহির, তুই কি আমার শ্যাডো? এত পিছনে লেগে থাকিস কেন?! 😂",
+            "বিজ্ঞানীদের ধারণা: মাহিরের নিজের কোনো কাজ নাই, কাজ একটাই—আমার পিছে লেগে থাকা! 🥱",
+            "মাহির ভাই, জিপিএসও এত নির্ভুলভাবে পিছু নেয় না, তুই যতখানি নিস! 📍",
+            "মাহির কে কেউ একটা চাকরি দে! সারাদিন আমার পিছে লেগে থেকে ক্লান্ত হয় না? 🤦‍♂️",
+            "মাহির: 'আমি তো তোর পিছে লাগি না!' <br> ব্রেন: 'মিথ্যা বলিস না রে!' 🤫",
+            "তোর এই ফ্রি টাইমের ১% যদি পড়াশোনায় দিতিস, আজ তুই নাসায় থাকতি মাহির! 🚀",
+            "আজকের আবহাওয়া: সূর্য উঠবে, মেঘ কাটবে, আর মাহির আবার আমার পিছে লাগবে! ☀️"
+        ];
+
+        let index = 0;
+
+        function nextRoast() {
+            index = (index + 1) % roasts.length;
+            const roastText = document.getElementById("roastText");
+            
+            roastText.style.opacity = 0;
+            roastText.style.transform = "scale(0.8)";
+            
+            setTimeout(() => {
+                roastText.innerHTML = roasts[index];
+                roastText.style.opacity = 1;
+                roastText.style.transform = "scale(1)";
+            }, 200);
+
+            createEmoji();
+        }
+
+        function createEmoji() {
+            const emojis = ['🐸', '🤡', '🐒', '🌶️', '🔥', '💩'];
+            const emoji = document.createElement('div');
+            emoji.classList.add('floating-emoji');
+            emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.left = Math.random() * 100 + 'vw';
+            emoji.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            
+            document.body.appendChild(emoji);
+
+            setTimeout(() => {
+                emoji.remove();
+            }, 4000);
+        }
+
+        setInterval(createEmoji, 800);
+    </script>
+</body>
+</html>
